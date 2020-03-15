@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Anime",
+        "color": ""
+    },
+    {
+        "id": 2,
+        "name": "Pelicula",
+        "color": ""
+    },
+    {
+        "id": 3,
+        "name": "OVA",
+        "color": ""
+    }
+]

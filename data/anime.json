@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "title": "Ano Hi Mita Hana no Namae o Bokutachi wa Mada Shiranai",
+        "alternative_title": "Anohana: The Flower We Saw That Day",
+        "japanese_title": "あの日見た花の名前を僕達はまだ知らない",
+        "type_anime": 1,
+        "cover_image": "https://lh3.googleusercontent.com/proxy/h72eL9SPOGY6gBGpHkB2Blb5KE4ewIJK8toRmt0o5F5JpbN2Ry6bPoksUSEGHeE3A8BvFYW9h0jZ2cnDbpJbmTcK2MRImYuidxRO4Yei8pwt4v6bn9EGa-X-oQSZ5_2X98QS-5Um5Qf5Um1n874K",
+        "visits": 119392,
+        "chapters": 11,
+        "duration": 23,
+        "issued_date": "12-03-2020",
+        "finished_date": null,
+        "season": {
+            "year": 2011,
+            "season": "winter"
+        },
+        "status": "FINISHED",
+        "synopsis": "Un grupo de amigos de la infancia se separan debido a un trágico accidente en el cual perdieron a una de sus amigas. Jinta deberá reunir a sus antiguos amigos de la infancia ya que esa amiga que perdieron regresa como un espíritu para cumplir una promesa que hizo antes de morir, esta misión revelara nuevos y viejos sentimientos en los personajes para conseguir ese único deseo.",
+        "genders": [
+            "Drama", "Sobrenatural", "Recuentos de la vida"
+        ],
+        "relateds" : [
+            {
+                "id": 2,
+                "type": "Secuela"
+            }
+        ]
+    }
+]
