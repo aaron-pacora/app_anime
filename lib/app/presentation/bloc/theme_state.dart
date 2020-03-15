@@ -1,17 +1,17 @@
 part of 'theme_bloc.dart';
 
 abstract class ThemeState extends Equatable {
-  final Brightness brightness;
-  ThemeState({@required this.brightness});
+  final ThemeMode themeMode;
+  ThemeState({@required this.themeMode});
   @override
   List<Object> get props => [];
 
 }
 
 class DarkThemeState extends ThemeState {
-  final Brightness brightness = Brightness.dark;
+  final ThemeMode themeMode = ThemeMode.dark;
 }
 
 class LigthThemeState extends ThemeState {
-  final Brightness brightness = Brightness.light;
+  final ThemeMode themeMode = ThemeMode.light;
 }

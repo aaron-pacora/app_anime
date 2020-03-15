@@ -13,24 +13,46 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
+
+  final ThemeBloc themeBloc =  ij.sl<ThemeBloc>();
+
+  MyApp(){
+    themeBloc.add(GetCurrentThemeEvent());
+  }
+  
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ThemeBloc>(create: (_) => ij.sl<ThemeBloc>())
+        BlocProvider<ThemeBloc>(create: (_) => themeBloc)
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (_, ThemeState state){
           return MaterialApp(
             title: 'Legion Anime',
+            themeMode: state.themeMode,
             theme: ThemeData(
-              brightness: state.brightness,
+              primaryColor: PRIMARY_COLOR,
               accentColor: ACCENT_COLOR,
               fontFamily: 'Kalam',
               textTheme: TextTheme(
                 body1: TextStyle(
                   fontSize: 16
-                )
+                ),
+                overline: TextStyle(color: Colors.white)
+              ),
+              iconTheme: IconThemeData(
+                color: Colors.white
+              ),
+              canvasColor: BACKGROUND_COLOR
+            ),
+            darkTheme: ThemeData(
+              brightness: Brightness.dark,
+              fontFamily: 'Kalam',
+              textTheme: TextTheme(
+                body1: TextStyle(
+                  fontSize: 16
+                ),
               )
             ),
             home: ListAnimesPage(),

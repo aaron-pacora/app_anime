@@ -1,4 +1,5 @@
 // import 'package:app_anime/app/domain/entities/theme_entity.dart';
+import 'package:app_anime/app/domain/entities/theme_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:app_anime/app/data/models/theme_model.dart';
@@ -15,9 +16,11 @@ class ThemeLocalDatasourceImpl implements ThemeLocalDatasource {
 
   @override
   Future<ThemeModel> getTheme() async {
-    String isSaved = sharedPreferences.getString("CURRENT_THEME");
-    print(isSaved);
-    return Future.value(null);
+    DateTime now = DateTime.now();
+    if(now.hour >= 6 && now.hour <= 18){
+      return Future.value(ThemeModel(currentTheme: TypesThemes.ligth));
+    }
+    return Future.value(ThemeModel(currentTheme: TypesThemes.dark));
   }
 
   @override

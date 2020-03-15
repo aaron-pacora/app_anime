@@ -43,12 +43,22 @@ class DrawerMenu extends StatelessWidget {
   Widget getRowHead(BuildContext context){
     return Container(
       padding: EdgeInsets.only(left: 16, right: 16, top: 24, bottom: 10),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+          Theme.of(context).primaryColor,
+          Theme.of(context).primaryColor.withOpacity(.6),
+        ])
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Row(
             children: <Widget>[
-              CircleAvatar(),
+              CircleAvatar(
+                backgroundColor: Colors.transparent,
+                backgroundImage: AssetImage("assets/images/logo.png"),
+              ),
               Spacer(),
               IconButton(icon: Icon(Icons.help, size: 20,), onPressed: (){
                 print("help");
@@ -63,15 +73,15 @@ class DrawerMenu extends StatelessWidget {
                     iconData = Icons.wb_sunny;
                   }
                   return IconButton(icon: Icon(iconData, size: 20,), onPressed: (){
-                    BlocProvider.of<ThemeBloc>(context).add(SwitchTehemEvent());
+                    BlocProvider.of<ThemeBloc>(context).add(SwitchThemeEvent());
                   });
                 }
               )
             ],
           ),
           Padding(padding: EdgeInsets.only(bottom: 8)),
-          Text("Legion Anime v 1.1.4.2"),
-          Text("luis_paco01@hotmail.com")
+          Text("Legion Anime v 1.1.4.2", style: TextStyle(color: Theme.of(context).textTheme.overline.color),),
+          Text("luis_paco01@hotmail.com", style: TextStyle(color: Theme.of(context).textTheme.overline.color),),
         ],
       ),
     );

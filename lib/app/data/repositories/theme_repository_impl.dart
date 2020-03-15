@@ -13,17 +13,16 @@ class ThemeRepositoryImpl implements ThemeRepository{
     @required this.themeLocalDatasource
   });
 
-  Future<Either<Failure, List<ThemeModel>>> getCurrentTheme() async{
-    await themeLocalDatasource.getTheme();
+  Future<Either<Failure, ThemeModel>> getCurrentTheme() async{
+    return Future.value(Right( await themeLocalDatasource.getTheme()));
+  }
+  Future<Either<Failure, ThemeModel>> changeToDarkTheme() async{
     return Future.value(Left(PreferencesFailure(message: "Error")));
   }
-  Future<Either<Failure, List<ThemeModel>>> changeToDarkTheme() async{
+  Future<Either<Failure, ThemeModel>> changeToLightTheme() async{
     return Future.value(Left(PreferencesFailure(message: "Error")));
   }
-  Future<Either<Failure, List<ThemeModel>>> changeToLightTheme() async{
-    return Future.value(Left(PreferencesFailure(message: "Error")));
-  }
-  Future<Either<Failure, List<ThemeModel>>> changeToCustomTheme() async{
+  Future<Either<Failure, ThemeModel>> changeToCustomTheme() async{
     return Future.value(Left(PreferencesFailure(message: "Error")));
   }
 

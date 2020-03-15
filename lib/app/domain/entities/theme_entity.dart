@@ -16,5 +16,5 @@ class ThemeEntity extends Equatable{
 }
 
 enum TypesThemes {
-  dartk, ligth, custom
+  dark, ligth, custom
 }
