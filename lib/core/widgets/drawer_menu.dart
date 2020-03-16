@@ -1,7 +1,8 @@
-import 'package:app_anime/app/presentation/bloc/theme_bloc.dart';
-import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:feather_icons_flutter/feather_icons_flutter.dart';
+
+import 'package:app_anime/app/presentation/bloc/theme_bloc.dart';
 
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({Key key}) : super(key: key);

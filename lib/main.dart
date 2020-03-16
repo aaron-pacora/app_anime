@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:app_anime/app/colors.dart';
@@ -14,17 +16,11 @@ void main() async {
 
 class MyApp extends StatelessWidget {
 
-  final ThemeBloc themeBloc =  ij.sl<ThemeBloc>();
-
-  MyApp(){
-    themeBloc.add(GetCurrentThemeEvent());
-  }
-  
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ThemeBloc>(create: (_) => themeBloc)
+        BlocProvider<ThemeBloc>(create: (_) => ij.sl<ThemeBloc>())
       ],
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (_, ThemeState state){
@@ -44,16 +40,26 @@ class MyApp extends StatelessWidget {
               iconTheme: IconThemeData(
                 color: Colors.white
               ),
-              canvasColor: BACKGROUND_COLOR
+              canvasColor: BACKGROUND_COLOR,
+              cupertinoOverrideTheme: CupertinoThemeData(
+                primaryColor: Colors.white,
+              ),
+              cursorColor: Colors.white,
+              inputDecorationTheme: InputDecorationTheme()
             ),
             darkTheme: ThemeData(
               brightness: Brightness.dark,
               fontFamily: 'Kalam',
+              accentColor: Colors.white,
               textTheme: TextTheme(
                 body1: TextStyle(
                   fontSize: 16
                 ),
-              )
+              ),
+              cupertinoOverrideTheme: CupertinoThemeData(
+                primaryColor: PRIMARY_COLOR,
+              ),
+              cursorColor: PRIMARY_COLOR
             ),
             home: ListAnimesPage(),
           );
