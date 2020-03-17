@@ -27,6 +27,7 @@ class _DefaultAppBarState extends State<DefaultAppBar>{
       centerTitle: false,
       title: toSearch ? getInputSearch() : Text(widget.title),
       leading: toSearch ? IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: (){
+        clearInput();
         setState(() {
           toSearch = false;
         });
@@ -53,6 +54,7 @@ class _DefaultAppBarState extends State<DefaultAppBar>{
             controller: _controllerInputSearch,
             textAlignVertical: TextAlignVertical.center,
             maxLines: 1,
+            autofocus: true,
             onChanged: (text){
               setState(() {
                 textSearch = text;
@@ -61,13 +63,9 @@ class _DefaultAppBarState extends State<DefaultAppBar>{
             decoration : InputDecoration(
               border: InputBorder.none,
               hintText: "Buscar ...",
+              hintStyle: TextStyle(color: Colors.white70),
               suffixIcon: textSearch.length > 0 ? IconButton(
-                onPressed: (){
-                  _controllerInputSearch.clear();
-                  setState(() {
-                    textSearch = "";
-                  });
-                },
+                onPressed: clearInput,
                 icon: Icon(Icons.clear),
               ) : null 
             ),
@@ -75,5 +73,12 @@ class _DefaultAppBarState extends State<DefaultAppBar>{
         )
       ],
     );
+  }
+
+  void clearInput(){
+    _controllerInputSearch.clear();
+    setState(() {
+      textSearch = "";
+    });
   }
 }

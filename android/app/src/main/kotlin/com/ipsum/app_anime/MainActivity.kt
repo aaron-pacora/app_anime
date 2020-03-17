@@ -1,4 +1,4 @@
-package com.example.app_anime
+package com.ipsum.app_anime
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

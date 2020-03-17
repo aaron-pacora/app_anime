@@ -1,0 +1,1 @@
+const String RECENT_PAGE = "RECENT_PAGE";
