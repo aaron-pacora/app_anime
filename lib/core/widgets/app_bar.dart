@@ -5,7 +5,7 @@ class DefaultAppBar extends StatefulWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize; // default is 56.0
   final String title;
-  
+
   DefaultAppBar({
     Key key,
     @required this.title
@@ -37,8 +37,7 @@ class _DefaultAppBarState extends State<DefaultAppBar>{
           setState(() {
             toSearch = true;
           });
-        }),
-        IconButton(icon: Icon(Icons.format_paint), tooltip: "Personalizar", onPressed: (){}),
+        })
       ],
     );
   }
@@ -67,7 +66,7 @@ class _DefaultAppBarState extends State<DefaultAppBar>{
               suffixIcon: textSearch.length > 0 ? IconButton(
                 onPressed: clearInput,
                 icon: Icon(Icons.clear),
-              ) : null 
+              ) : null
             ),
           )
         )

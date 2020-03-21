@@ -1,3 +1,8 @@
+import 'package:app_anime/features/home/data/datasources/anime_chapter_datasource.dart';
+import 'package:app_anime/features/home/data/repositories/anime_chapter_repository_impl.dart';
+import 'package:app_anime/features/home/domain/repositories/anime_chapter_repository.dart';
+import 'package:app_anime/features/home/domain/usecases/get_list_anime_usecase.dart';
+import 'package:app_anime/features/home/presentation/bloc/list_anime_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,21 +19,24 @@ Future<void> init() async {
   sl.registerFactory(
     () => ThemeBloc()
   );
+  sl.registerFactory(
+    () => ListAnimeBloc(sl())
+  );
 
   // Use cases
-  // sl.registerLazySingleton(() => GetCurrentThemeUsercase(sl()));
+  sl.registerLazySingleton(() => GetListAnimeUsecase(sl()));
 
   // Repository
-  // sl.registerLazySingleton<ThemeRepository>(
-  //   () => ThemeRepositoryImpl(
-  //     themeLocalDatasource: sl()
-  //   ),
-  // );
+  sl.registerLazySingleton<AnimeChapterRepository>(
+    () => AnimeChapterRepositoryImpl(
+      animeChapterDatasource: sl()
+    ),
+  );
 
   // Data sources
-  // sl.registerLazySingleton<ThemeLocalDatasource>(
-  //   () => ThemeLocalDatasourceImpl(sharedPreferences: sl())
-  // );
+  sl.registerLazySingleton<AnimeChapterDatasource>(
+    () => AnimeChapterDatasourceImpl()
+  );
 
   //! External
   final sharedPreferences = await SharedPreferences.getInstance();

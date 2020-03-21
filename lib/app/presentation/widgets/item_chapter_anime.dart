@@ -1,19 +1,31 @@
+import 'package:app_anime/features/home/domain/entities/anime_chapter_entity.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ItemChapterAnime extends StatefulWidget {
-  ItemChapterAnime({Key key}) : super(key: key);
+  final AnimeChapterEntity animeChapterEntity;
+  ItemChapterAnime({Key key, this.animeChapterEntity}) : super(key: key);
 
   @override
   _ItemChapterAnimeState createState() => _ItemChapterAnimeState();
 }
 
 class _ItemChapterAnimeState extends State<ItemChapterAnime> {
+  AnimeChapterEntity animeChapterEntity;
 
-  bool isFavoirute = false;
-  bool chapterSeen = false;
+  bool isFavorite;
+  bool chapterSeen;
 
-  String imageUrl = "https://images-na.ssl-images-amazon.com/images/I/51mDfXoEwDL._AC_SX342_.jpg";
+  String imageUrl;
+
+  @override
+  void initState() {
+    animeChapterEntity = widget.animeChapterEntity;
+    isFavorite = animeChapterEntity.isFavorite;
+    chapterSeen = animeChapterEntity.chapterSeen;
+    imageUrl = animeChapterEntity.urlCover;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +47,11 @@ class _ItemChapterAnimeState extends State<ItemChapterAnime> {
                       children: <Widget>[
                         Expanded(
                           child: Text(
-                            "Ano Hi Mita Hana no Namae o Bokutachi wa Mada Shiranai",
+                            animeChapterEntity.title,
                             style: TextStyle(fontSize: 20), overflow: TextOverflow.ellipsis, maxLines: 4,
                           )
                         ),
-                        Text("Episodio 1", style: TextStyle(fontSize: 18, color: Theme.of(context).accentColor))
+                        Text("Episodio "+animeChapterEntity.episode, style: TextStyle(fontSize: 18, color: Theme.of(context).accentColor))
                       ],
                     ),
                   )
@@ -51,10 +63,10 @@ class _ItemChapterAnimeState extends State<ItemChapterAnime> {
           Row(
             children: <Widget>[
               getButtonIcon(
-                icon: isFavoirute ? Icons.favorite : Icons.favorite_border,
+                icon: isFavorite ? Icons.favorite : Icons.favorite_border,
                 onTap: (){
                   setState(() {
-                    isFavoirute = !isFavoirute;
+                    isFavorite = !isFavorite;
                   });
                 },
               ),
@@ -82,6 +94,14 @@ class _ItemChapterAnimeState extends State<ItemChapterAnime> {
   }
 
   Widget getImageAnime(){
+    String totalViewed;
+    if((animeChapterEntity.totalViewed / 1000000).round() > 0){
+      totalViewed = (animeChapterEntity.totalViewed / 1000000).toStringAsFixed(1) + " M";
+    }else if((animeChapterEntity.totalViewed / 1000).round() > 0){
+      totalViewed = (animeChapterEntity.totalViewed / 1000).toStringAsFixed(1) + " K";
+    }else {
+      totalViewed = animeChapterEntity.totalViewed.toString();
+    }
     return Stack(
       children: <Widget>[
          Container(
@@ -112,8 +132,8 @@ class _ItemChapterAnimeState extends State<ItemChapterAnime> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Icon(Icons.visibility, size: 12, color: Colors.white),
-                Padding(padding: EdgeInsets.only(right: 2)),
-                Text("548", style: TextStyle(color: Colors.white, fontSize: 12))
+                Padding(padding: EdgeInsets.only(right: 3)),
+                Text(totalViewed, style: TextStyle(color: Colors.white, fontSize: 12))
               ],
             ),
           ),

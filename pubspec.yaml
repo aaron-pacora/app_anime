@@ -1,5 +1,5 @@
 name: app_anime
-description: A new Flutter project.
+description: App Anime.
 
 version: 1.0.0+1
 
@@ -31,6 +31,8 @@ flutter:
   assets: 
     - assets/images/logo.png
     - assets/images/placeholder.png
+
+    - data/chapters_anime.json
 
   fonts:
     - family: Kalam
