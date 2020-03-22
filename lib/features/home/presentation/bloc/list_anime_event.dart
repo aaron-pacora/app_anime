@@ -5,4 +5,5 @@ abstract class ListAnimeEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class LoadingListAnimeEvent extends ListAnimeEvent {}
 class GetListAnimeEvent extends ListAnimeEvent {}

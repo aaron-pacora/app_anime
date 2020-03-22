@@ -61,10 +61,10 @@ class MyApp extends StatelessWidget {
               cupertinoOverrideTheme: CupertinoThemeData(
                 primaryColor: PRIMARY_COLOR,
               ),
-              cursorColor: PRIMARY_COLOR
+              cursorColor: PRIMARY_COLOR,
             ),
             onGenerateRoute: Routes.onGenerateRoute,
-            home: RecentPage(),
+            home: RecentPage()
           );
         },
       ),

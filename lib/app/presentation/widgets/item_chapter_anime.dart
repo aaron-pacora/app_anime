@@ -1,3 +1,5 @@
+import 'package:app_anime/core/navigation/page_names.dart';
+import 'package:app_anime/core/utils/int_utils.dart';
 import 'package:app_anime/features/home/domain/entities/anime_chapter_entity.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -80,7 +82,9 @@ class _ItemChapterAnimeState extends State<ItemChapterAnime> {
               ),
               getButtonIcon(
                 icon: Icons.list,
-                onTap: (){},
+                onTap: (){
+                  Navigator.of(context).pushNamed(DETAIL_ANIME_PAGE, arguments: {"anime_id": animeChapterEntity.id, "title": animeChapterEntity.title});
+                },
               ),
               getButtonIcon(
                 icon: Icons.play_arrow,
@@ -94,30 +98,23 @@ class _ItemChapterAnimeState extends State<ItemChapterAnime> {
   }
 
   Widget getImageAnime(){
-    String totalViewed;
-    if((animeChapterEntity.totalViewed / 1000000).round() > 0){
-      totalViewed = (animeChapterEntity.totalViewed / 1000000).toStringAsFixed(1) + " M";
-    }else if((animeChapterEntity.totalViewed / 1000).round() > 0){
-      totalViewed = (animeChapterEntity.totalViewed / 1000).toStringAsFixed(1) + " K";
-    }else {
-      totalViewed = animeChapterEntity.totalViewed.toString();
-    }
+    String totalViewed = IntUtils.abreviature(animeChapterEntity.totalViewed);
     return Stack(
       children: <Widget>[
-         Container(
-           width: 125,
-           height: 150,
-           child: CachedNetworkImage(
-              fit: BoxFit.cover,
-              imageUrl: imageUrl,
-              placeholder: (context, url) => Container(
-                child: Image(image: AssetImage("assets/images/placeholder.png"))
-              ),
-              errorWidget: (context, url, error) => Container(
-                child: Image(image: AssetImage("assets/images/placeholder.png"))
-              ),
+        Container(
+          width: 125,
+          height: 150,
+          child: CachedNetworkImage(
+            fit: BoxFit.cover,
+            imageUrl: imageUrl,
+            placeholder: (context, url) => Container(
+              child: Image(image: AssetImage("assets/images/placeholder.png"))
             ),
-         ),
+            errorWidget: (context, url, error) => Container(
+              child: Image(image: AssetImage("assets/images/placeholder.png"))
+            ),
+          ),
+        ),
         Positioned(
           top: 5,
           right: 5,

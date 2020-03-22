@@ -8,7 +8,6 @@ import 'package:app_anime/app/presentation/bloc/theme_bloc.dart';
 class DrawerMenu extends StatelessWidget {
   final String currentPage;
   const DrawerMenu({Key key, this.currentPage}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
@@ -28,28 +27,28 @@ class DrawerMenu extends StatelessWidget {
               child: ListView(
                 padding: new EdgeInsets.only(top: 0),
                 children: <Widget>[
-                  getItemMenu("Recientes",Icons.home, page: RECENT_PAGE),
-                  getItemMenu("Directorio",Icons.video_library),
-                  getItemMenu("En emisión",Icons.ondemand_video),
-                  getItemMenu("Favoritos y más",Icons.favorite),
-                  getItemMenu("Mis notificaciones",Icons.notifications),
-                  getItemMenu("Cerrar sesión", FeatherIcons.logOut),
+                  getItemMenu(context, "Recientes",Icons.home, page: RECENT_PAGE),
+                  getItemMenu(context, "Directorio",Icons.video_library),
+                  getItemMenu(context, "En emisión",Icons.ondemand_video),
+                  getItemMenu(context, "Favoritos y más",Icons.favorite),
+                  getItemMenu(context, "Mis notificaciones",Icons.notifications),
+                  getItemMenu(context, "Cerrar sesión", FeatherIcons.logOut),
                   Divider(),
-                  getItemMenu("Mis vídeos",Icons.videocam),
-                  getItemMenu("Chat",Icons.chat),
-                  getItemMenu("Grupo Seguidores",Icons.group),
-                  getItemMenu("Foro - Encuestas",Icons.record_voice_over),
-                  getItemMenu("Noticias de Ecma",FeatherIcons.radio),
+                  getItemMenu(context, "Mis vídeos",Icons.videocam),
+                  getItemMenu(context, "Chat",Icons.chat),
+                  getItemMenu(context, "Grupo Seguidores",Icons.group),
+                  getItemMenu(context, "Foro - Encuestas",Icons.record_voice_over),
+                  getItemMenu(context, "Noticias de Ecma",FeatherIcons.radio),
                   Divider(),
-                  getItemMenu("Tienda Legión",Icons.shopping_cart),
-                  getItemMenu("Música Random",Icons.music_note),
-                  getItemMenu("Manga Libre",Icons.import_contacts),
-                  getItemMenu("Versiones anteriores",Icons.perm_device_information),
+                  getItemMenu(context, "Tienda Legión",Icons.shopping_cart),
+                  getItemMenu(context, "Música Random",Icons.music_note),
+                  getItemMenu(context, "Manga Libre",Icons.import_contacts),
+                  getItemMenu(context, "Versiones anteriores",Icons.perm_device_information),
                   Divider(),
-                  getItemMenu("Compartir",Icons.share),
-                  getItemMenu("Sugerencias",Icons.email),
-                  getItemMenu("Califícanos",Icons.tag_faces),
-                  getItemMenu("Política de Privacidad", FeatherIcons.shield),
+                  getItemMenu(context, "Compartir",Icons.share),
+                  getItemMenu(context, "Sugerencias",Icons.email),
+                  getItemMenu(context, "Califícanos",Icons.tag_faces),
+                  getItemMenu(context, "Política de Privacidad", FeatherIcons.shield),
                 ],
               ),
             )
@@ -106,11 +105,16 @@ class DrawerMenu extends StatelessWidget {
     );
   }
 
-  ListTile getItemMenu(String title, IconData icon, {String page}){
+  ListTile getItemMenu(BuildContext context, String title, IconData icon, {String page}){
+    bool selected = (page != null && page == this.currentPage);
     return ListTile(
       leading: Icon(icon),
-      selected: (page != null && page == this.currentPage),
-      onTap: (){},
+      selected: selected,
+      onTap: (){
+        if(!selected){
+          Navigator.of(context).pushNamedAndRemoveUntil(page, (Route<dynamic> route) => false);
+        }
+      },
       title: Text(title, style: TextStyle(fontWeight: FontWeight.bold),),
     );
   }

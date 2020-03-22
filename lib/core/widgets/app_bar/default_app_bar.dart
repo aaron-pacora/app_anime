@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 
+import 'package:app_anime/core/widgets/app_bar/icon_refresh.dart';
+
 class DefaultAppBar extends StatefulWidget implements PreferredSizeWidget {
 
   @override
   final Size preferredSize; // default is 56.0
   final String title;
+  final String currentPageName;
+  final bool centerTitle;
+  final bool showSearchAction;
+  final bool showRefreshAction;
 
   DefaultAppBar({
     Key key,
-    @required this.title
+    @required this.title,
+    @required this.currentPageName,
+    this.centerTitle,
+    this.showSearchAction: true,
+    this.showRefreshAction: true,
   }) : preferredSize = Size.fromHeight(kToolbarHeight), super(key: key);
 
   @override
@@ -24,22 +34,36 @@ class _DefaultAppBarState extends State<DefaultAppBar>{
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      centerTitle: false,
+      centerTitle: widget.centerTitle,
       title: toSearch ? getInputSearch() : Text(widget.title),
       leading: toSearch ? IconButton(icon: Icon(Icons.arrow_back_ios), onPressed: (){
         clearInput();
         setState(() {
           toSearch = false;
         });
-      }) : null,
-      actions: toSearch ? [] : <Widget>[
-        IconButton(icon: Icon(Icons.search), tooltip: "Buscar anime", onPressed: (){
-          setState(() {
-            toSearch = true;
-          });
-        })
-      ],
+      }) : IconButton(icon: Icon(Icons.menu), onPressed: (){
+        Scaffold.of(context).openDrawer();
+      }),
+      actions: getIconActions(),
     );
+  }
+
+  List<Widget> getIconActions(){
+    if(toSearch){
+      return [];
+    }
+    List<Widget> icons = [];
+    if(widget.showSearchAction){
+      icons.add(IconButton(icon: Icon(Icons.search), tooltip: "Buscar anime", onPressed: (){
+        setState(() {
+          toSearch = true;
+        });
+      }));
+    }
+    if(widget.showRefreshAction){
+      icons.add(IconRefresh.getIcon(context: context, currentPageName: widget.currentPageName));
+    }
+    return icons;
   }
 
   Widget getInputSearch(){

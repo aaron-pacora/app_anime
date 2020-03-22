@@ -26,7 +26,9 @@ class ListAnimeBloc extends Bloc<ListAnimeEvent, ListAnimeState> {
   Stream<ListAnimeState> mapEventToState(
     ListAnimeEvent event,
   ) async* {
-    if(event is GetListAnimeEvent){
+    if(event is LoadingListAnimeEvent){
+      yield LoadingListAnimeState();
+    }else if(event is GetListAnimeEvent){
       yield* _eitherListAnime(await getListAnimeUsecase(NoParams()));
     }
   }

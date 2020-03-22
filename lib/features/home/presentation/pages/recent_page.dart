@@ -1,13 +1,13 @@
-import 'package:app_anime/core/utils/date_utils.dart';
-import 'package:app_anime/features/home/domain/entities/anime_chapter_entity.dart';
-import 'package:app_anime/features/home/domain/entities/list_anime_chapters_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:app_anime/app/presentation/widgets/item_chapter_anime.dart';
 import 'package:app_anime/core/navigation/page_names.dart';
-import 'package:app_anime/core/widgets/app_bar.dart';
+import 'package:app_anime/core/widgets/app_bar/default_app_bar.dart';
 import 'package:app_anime/core/widgets/drawer_menu.dart';
+import 'package:app_anime/core/utils/date_utils.dart';
+import 'package:app_anime/app/presentation/widgets/item_chapter_anime.dart';
+import 'package:app_anime/features/home/domain/entities/anime_chapter_entity.dart';
+import 'package:app_anime/features/home/domain/entities/list_anime_chapters_entity.dart';
 import 'package:app_anime/features/home/presentation/bloc/list_anime_bloc.dart';
 
 import 'package:app_anime/injection_container.dart';
@@ -35,9 +35,7 @@ class _RecentPageState extends State<RecentPage> {
     return BlocProvider(
       create: (_) => _listAnimeBloc,
       child: Scaffold(
-        appBar: DefaultAppBar(
-          title: "Recientes",
-        ),
+        appBar: DefaultAppBar( currentPageName: RECENT_PAGE, title: "Recientes" ),
         drawer: DrawerMenu(currentPage: RECENT_PAGE),
         body: BlocBuilder<ListAnimeBloc, ListAnimeState>(
           builder: (_, state){
