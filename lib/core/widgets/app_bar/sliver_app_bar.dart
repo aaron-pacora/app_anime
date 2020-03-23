@@ -9,12 +9,14 @@ class DefaultSliverAppBar extends StatefulWidget {
   final String title;
   final String currentPageName;
   final String urlImage;
+  final PreferredSizeWidget bottom;
 
   DefaultSliverAppBar({
     Key key,
     @required this.title,
     @required this.currentPageName,
     this.urlImage:"",
+    this.bottom,
   }): super(key: key);
 
   @override
@@ -37,6 +39,7 @@ class _DefaultSliverAppBarState extends State<DefaultSliverAppBar>{
           children: <Widget>[
             CachedNetworkImage(
               fit: BoxFit.cover,
+              width: double.infinity,
               imageUrl: widget.urlImage,
               placeholder: (context, url) => Container(
                 child: Image(image: AssetImage("assets/images/placeholder.png"))
@@ -54,8 +57,9 @@ class _DefaultSliverAppBarState extends State<DefaultSliverAppBar>{
               ),
             )
           ],
-        )
-      ) : null
+        ),
+      ) : null,
+      bottom: widget.bottom,
     );
   }
 

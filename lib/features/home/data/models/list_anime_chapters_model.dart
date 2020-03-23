@@ -10,7 +10,6 @@ class ListAnimeChaptersModel extends ListAnimeChaptersEntity{
   });
 
   factory ListAnimeChaptersModel.fromJson(String dateJson, List<dynamic> dataAnime, { ListAnimeChaptersModel beforeData}){
-    // print(DateTime.parse(dateJson.replaceAll("_", "-")));
     DateTime keyDateTime = DateTime.parse(dateJson.replaceAll("_", "-"));
     Map<int, AnimeChapterModel> listAnime = {};
     for (dynamic itemAnime in dataAnime) {
@@ -31,9 +30,7 @@ class ListAnimeChaptersModel extends ListAnimeChaptersEntity{
         keyDateTime: listAnime
       };
     }
-    return ListAnimeChaptersModel(
-      list: newList
-    );
+    return ListAnimeChaptersModel(list: newList);
   }
 
   @override

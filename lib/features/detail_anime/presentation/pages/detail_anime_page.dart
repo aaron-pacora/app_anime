@@ -1,4 +1,5 @@
 import 'package:app_anime/features/detail_anime/presentation/widgets/info_genders.dart';
+import 'package:app_anime/features/detail_anime/presentation/widgets/info_list_chapters.dart';
 import 'package:app_anime/features/detail_anime/presentation/widgets/info_synopsis.dart';
 import 'package:flutter/material.dart';
 
@@ -34,25 +35,52 @@ class _DetailAnimePageState extends State<DetailAnimePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: DrawerMenu(),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          DefaultSliverAppBar(title: widget.title, currentPageName: DETAIL_ANIME_PAGE, urlImage: urlImageCover,),
-          SliverList(delegate: new SliverChildListDelegate([
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                children: <Widget>[
-                  InfoAnime(title: widget.title),
-                  InfoSynopsis(),
-                  InfoGenders(),
-                  InfoView(),
-                  InfoData(),
+      body: DefaultTabController(
+        length: 2,
+        child: NestedScrollView(
+          headerSliverBuilder: (context, value){
+            return [ DefaultSliverAppBar(
+              title: widget.title,
+              currentPageName: DETAIL_ANIME_PAGE,
+              urlImage: urlImageCover,
+              bottom: TabBar(
+                tabs: <Widget>[
+                  Tab(child: Text("Información", style: TextStyle(fontSize: 16),)),
+                  Tab(child: Text("Episodios", style: TextStyle(fontSize: 16),))
                 ],
-              ),
-            )
-          ]))
-        ],
-      ),
+              )
+            )];
+          },
+          body: TabBarView(
+            children: <Widget>[
+              getInformationPage(),
+              getChaptersPage()
+            ],
+          )
+          )
+        ),
+    );
+  }
+
+  Widget getInformationPage(){
+    return ListView(
+      padding: EdgeInsets.all(10),
+      children: <Widget>[
+        InfoAnime(title: widget.title),
+        InfoSynopsis(),
+        InfoGenders(),
+        InfoView(),
+        InfoData()
+      ]
+    );
+  }
+
+  Widget getChaptersPage(){
+    return ListView(
+      padding: EdgeInsets.all(10),
+      children: <Widget>[
+        InfoListChapters(),
+      ]
     );
   }
 }

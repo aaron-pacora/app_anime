@@ -5,6 +5,8 @@ import 'package:feather_icons_flutter/feather_icons_flutter.dart';
 
 import 'package:app_anime/app/presentation/bloc/theme_bloc.dart';
 
+String currentView = RECENT_PAGE;
+
 class DrawerMenu extends StatelessWidget {
   final String currentPage;
   const DrawerMenu({Key key, this.currentPage}) : super(key: key);
@@ -106,12 +108,12 @@ class DrawerMenu extends StatelessWidget {
   }
 
   ListTile getItemMenu(BuildContext context, String title, IconData icon, {String page}){
-    bool selected = (page != null && page == this.currentPage);
+    bool selected = (page != null && (page == this.currentPage || currentView == page));
     return ListTile(
       leading: Icon(icon),
       selected: selected,
       onTap: (){
-        if(!selected){
+        if(!selected && page != null){
           Navigator.of(context).pushNamedAndRemoveUntil(page, (Route<dynamic> route) => false);
         }
       },
