@@ -1,8 +1,10 @@
-import 'package:app_anime/core/navigation/page_names.dart';
-import 'package:app_anime/core/utils/int_utils.dart';
-import 'package:app_anime/features/home/domain/entities/anime_chapter_entity.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
+import 'package:app_anime/core/navigation/page_names.dart';
+import 'package:app_anime/core/utils/int_utils.dart';
+import 'package:app_anime/core/widgets/default_card.dart';
+import 'package:app_anime/features/home/domain/entities/anime_chapter_entity.dart';
 
 class ItemChapterAnime extends StatefulWidget {
   final AnimeChapterEntity animeChapterEntity;
@@ -31,7 +33,7 @@ class _ItemChapterAnimeState extends State<ItemChapterAnime> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return DefaultCard(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       child: Column(
         children: <Widget>[

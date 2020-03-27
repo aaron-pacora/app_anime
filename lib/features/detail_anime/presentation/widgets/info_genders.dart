@@ -17,14 +17,21 @@ class InfoGenders extends StatelessWidget {
               Text("Géneros", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             ],
           ),
-          Wrap(
-            spacing: 10,
+          Row(
             children: <Widget>[
-              Chip(label: Text("Terror")),
-              Chip(label: Text("Drama")),
-              Chip(label: Text("Sobrenatural")),
-              Chip(label: Text("Misterio")),
-              Chip(label: Text("Psicológico"))
+              Expanded(
+                child: Wrap(
+                spacing: 10,
+                alignment: WrapAlignment.spaceAround,
+                children: <Widget>[
+                  Chip(label: Text("Terror")),
+                  Chip(label: Text("Drama")),
+                  Chip(label: Text("Sobrenatural")),
+                  Chip(label: Text("Misterio")),
+                  Chip(label: Text("Psicológico"))
+                ],
+              ),
+              )
             ],
           )
         ],

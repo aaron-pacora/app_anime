@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-class DefaultCard extends Card {
-  @override
+class DefaultCard extends StatelessWidget {
   final Clip clipBehavior;
-  @override
   final Widget child;
 
   final EdgeInsets padding;
 
-  DefaultCard({this.child, this.clipBehavior, this.padding});
+  DefaultCard({Key key, this.child, this.clipBehavior, this.padding}): super(key: key);
 
   @override
   Widget build(BuildContext context) {

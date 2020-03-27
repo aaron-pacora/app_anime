@@ -2,8 +2,9 @@ import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:app_anime/features/detail_anime/presentation/pages/detail_anime_page.dart';
 import 'package:app_anime/features/home/presentation/pages/recent_page.dart';
+import 'package:app_anime/features/detail_anime/presentation/pages/detail_anime_page.dart';
+import 'package:app_anime/features/directory/presentation/pages/directory_page.dart';
 import 'package:app_anime/core/navigation/page_names.dart';
 
 class Routes {
@@ -16,6 +17,9 @@ class Routes {
       break;
       case DETAIL_ANIME_PAGE:
         page = DetailAnimePage(title: args["title"], animeId: args["anime_id"]);
+      break;
+      case DIRECTORY_PAGE:
+        page = DirectoryPage();
       break;
       default:
         page = RecentPage();

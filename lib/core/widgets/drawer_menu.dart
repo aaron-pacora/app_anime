@@ -30,7 +30,7 @@ class DrawerMenu extends StatelessWidget {
                 padding: new EdgeInsets.only(top: 0),
                 children: <Widget>[
                   getItemMenu(context, "Recientes",Icons.home, page: RECENT_PAGE),
-                  getItemMenu(context, "Directorio",Icons.video_library),
+                  getItemMenu(context, "Directorio",Icons.video_library, page: DIRECTORY_PAGE),
                   getItemMenu(context, "En emisión",Icons.ondemand_video),
                   getItemMenu(context, "Favoritos y más",Icons.favorite),
                   getItemMenu(context, "Mis notificaciones",Icons.notifications),
@@ -114,6 +114,7 @@ class DrawerMenu extends StatelessWidget {
       selected: selected,
       onTap: (){
         if(!selected && page != null){
+          currentView = page;
           Navigator.of(context).pushNamedAndRemoveUntil(page, (Route<dynamic> route) => false);
         }
       },

@@ -9,6 +9,12 @@ import 'package:app_anime/features/home/domain/repositories/anime_chapter_reposi
 import 'package:app_anime/features/home/domain/usecases/get_list_anime_usecase.dart';
 import 'package:app_anime/features/home/presentation/bloc/list_anime_bloc.dart';
 
+import 'package:app_anime/features/directory/data/datasources/directory_datasource.dart';
+import 'package:app_anime/features/directory/data/repositories/directory_repository_impl.dart';
+import 'package:app_anime/features/directory/domain/repositories/directory_repository.dart';
+import 'package:app_anime/features/directory/domain/usecases/get_directory_usecase.dart';
+import 'package:app_anime/features/directory/presentation/bloc/directory_bloc.dart';
+
 final sl = GetIt.instance;
 
 Future<void> init() async {
@@ -34,6 +40,27 @@ Future<void> init() async {
   // Data sources
   sl.registerLazySingleton<AnimeChapterDatasource>(
     () => AnimeChapterDatasourceImpl()
+  );
+
+
+  // Bloc
+  sl.registerFactory(
+    () => DirectoryBloc(sl())
+  );
+
+  // Use cases
+  sl.registerLazySingleton(() => GetDirectoryUsecase(sl()));
+
+  // Repository
+  sl.registerLazySingleton<DirectoryRepository>(
+    () => DirectoryRepositoryImpl(
+      directoryDatasource: sl()
+    ),
+  );
+
+  // Data sources
+  sl.registerLazySingleton<DirectoryDatasource>(
+    () => DirectoryDatasourceImpl()
   );
 
   //! External

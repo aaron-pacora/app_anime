@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "title": "Ano Hi Mita Hana no Namae o Bokutachi wa Mada Shiranai",
+        "url_small_cover": "https://images-na.ssl-images-amazon.com/images/I/51mDfXoEwDL._AC_SX342_.jpg",
+        "type": "Anime"
+    },
+    {
+        "id": 2,
+        "title": "Elfen Lied",
+        "url_small_cover": "https://images-na.ssl-images-amazon.com/images/I/A1Yn%2Bt26-UL._AC_SX425_.jpg",
+        "type": "Anime"
+    },
+    {
+        "id": 3,
+        "title": "Shigatsu Wa Kimi No Uso",
+        "url_small_cover": "https://pics.filmaffinity.com/Your_Lie_in_April_Serie_de_TV-608609639-large.jpg",
+        "type": "Anime"
+    },
+    {
+        "id": 4,
+        "title": "Angel Beats",
+        "url_small_cover": "https://vignette.wikia.nocookie.net/key/images/c/c9/Angelbeats%21_-1st_beat-.jpg/revision/latest?cb=20160512060513&path-prefix=es",
+        "type": "Anime"
+    },
+    {
+        "id": 5,
+        "title": "Boku no Hero Academia",
+        "url_small_cover": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/my-hero-academia-heroes-rising-1574933265.jfif",
+        "type": "Anime"
+    },
+    {
+        "id": 6,
+        "title": "Nanatsu No Taizai",
+        "url_small_cover": "https://images.justwatch.com/poster/38657714/s592",
+        "type": "Anime"
+    },
+    {
+        "id": 7,
+        "title": "Itai no wa iya nano de bougyoryoku ni kyokufuri shitai to omoimasu",
+        "url_small_cover": "https://somoskudasai.com/wp-content/uploads/2018/12/mode3_w991-3e1c797b4350cfe5d5adda85b63a3674-718x1024.png",
+        "type": "Anime"
+    },
+    {
+        "id": 8,
+        "title": "KONOSUBA - God's blessing on this wonderful world!",
+        "url_small_cover": "https://de.web.img3.acsta.net/pictures/19/10/15/16/00/5377304.jpg",
+        "type": "Anime"
+    },
+    {
+        "id": 9,
+        "title": "Overlord!",
+        "url_small_cover": "https://m.media-amazon.com/images/M/MV5BOTFlY2NkOWItNTI3Yy00NDA5LTkzOTQtZGVmNDJlMzM4OGJlXkEyXkFqcGdeQXVyNDQxNjcxNQ@@._V1_UY1200_CR109,0,630,1200_AL_.jpg",
+        "type": "Anime"
+    },
+    {
+        "id": 10,
+        "title": "Youjo Senki The Saga of Tanya The Evil",
+        "url_small_cover": "https://somoskudasai.com/wp-content/uploads/2018/01/Tanya-Degurechaff.jpg",
+        "type": "Anime"
+    }
+]
