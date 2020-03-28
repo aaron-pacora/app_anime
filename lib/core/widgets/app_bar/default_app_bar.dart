@@ -16,7 +16,7 @@ class DefaultAppBar extends StatefulWidget implements PreferredSizeWidget {
     Key key,
     @required this.title,
     @required this.currentPageName,
-    this.centerTitle,
+    this.centerTitle: false,
     this.showSearchAction: true,
     this.showRefreshAction: true,
   }) : preferredSize = Size.fromHeight(kToolbarHeight), super(key: key);

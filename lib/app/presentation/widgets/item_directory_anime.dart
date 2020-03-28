@@ -36,11 +36,17 @@ class _IteDirectoryAnimeState extends State<ItemDirectoryAnime> {
               height: 200,
               child: getImageAnime()
             ),
+            Container(
+              color: Colors.blueAccent,
+              child: Center(
+                child: Text("Anime", style: TextStyle(color: Colors.white, fontSize: 14), textAlign: TextAlign.center,),
+              ),
+            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: Text(
                 animeEntity.title,
-                style: TextStyle(fontSize: 20), overflow: TextOverflow.ellipsis, maxLines: 1,
+                style: TextStyle(fontSize: 18), overflow: TextOverflow.ellipsis, maxLines: 1,
               ),
             )
           ],

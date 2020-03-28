@@ -34,7 +34,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
     return BlocProvider(
       create: (_) => _directoryBloc,
       child: Scaffold(
-        appBar: DefaultAppBar( currentPageName: DIRECTORY_PAGE, title: "Directorio" ),
+        appBar: DefaultAppBar( currentPageName: DIRECTORY_PAGE, title: "Directorio", showRefreshAction: false),
         drawer: DrawerMenu(currentPage: DIRECTORY_PAGE),
         body: BlocBuilder<DirectoryBloc, DirectoryState>(
           builder: (_, state){
@@ -51,16 +51,14 @@ class _DirectoryPageState extends State<DirectoryPage> {
             listAnimeChaptersEntity.list.forEach((dateKey, AnimeEntity animeEntity){
               dataWidgets.add(ItemDirectoryAnime(animeEntity: animeEntity));
             });
-            return Padding(
+            return ListView(
               padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-              child: ListView(
-                children: <Widget>[
-                  Wrap(
-                    alignment: WrapAlignment.spaceBetween,
-                    children: dataWidgets,
-                  )
-                ],
-              ),
+              children: <Widget>[
+                Wrap(
+                  alignment: WrapAlignment.spaceBetween,
+                  children: dataWidgets,
+                )
+              ],
             );
           }
         ),
